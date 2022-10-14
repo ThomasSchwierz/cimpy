@@ -30,5 +30,5 @@ class WindPlantDynamics(DynamicsFunctionBlock):
 		str = 'class=WindPlantDynamics\n'
 		attributes = self.__dict__
 		for key in attributes.keys():
-			str = str + key + '={}\n'.format(attributes[key])
+			str = str + key + '={}\n'.format(repr(attributes[key]))
 		return str
