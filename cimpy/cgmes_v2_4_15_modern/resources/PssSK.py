@@ -1,0 +1,61 @@
+"""
+Generated from the CGMES 3 files via cimgen: https://github.com/sogno-platform/cimgen
+"""
+
+from functools import cached_property
+from typing import Optional
+from pydantic import Field
+from pydantic.dataclasses import dataclass
+from ..utils.profile import BaseProfile, Profile
+
+from .PowerSystemStabilizerDynamics import PowerSystemStabilizerDynamics
+
+@dataclass
+class PssSK(PowerSystemStabilizerDynamics):
+    """
+    PSS Slovakian type - three inputs.
+
+    k1: Gain P (K1).  Typical Value = -0.3.
+    k2: Gain fe (K2).  Typical Value = -0.15.
+    k3: Gain If (K3).  Typical Value = 10.
+    t1: Denominator time constant (T1).  Typical Value = 0.3.
+    t2: Filter time constant (T2).  Typical Value = 0.35.
+    t3: Denominator time constant (T3).  Typical Value = 0.22.
+    t4: Filter time constant (T4).  Typical Value = 0.02.
+    t5: Denominator time constant (T5).  Typical Value = 0.02.
+    t6: Filter time constant (T6).  Typical Value = 0.02.
+    vsmax: Stabilizer output max limit (Vsmax).  Typical Value = 0.4.
+    vsmin: Stabilizer output min limit (Vsmin).  Typical Value = -0.4.
+    """
+
+    k1 : float = Field(default=0.0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    k2 : float = Field(default=0.0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    k3 : float = Field(default=0.0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    t1 : int = Field(default=0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    t2 : int = Field(default=0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    t3 : int = Field(default=0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    t4 : int = Field(default=0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    t5 : int = Field(default=0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    t6 : int = Field(default=0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    vsmax : float = Field(default=0.0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+    vsmin : float = Field(default=0.0, json_schema_extra={"in_profiles":[Profile.DY, ]}) 
+
+
+
+    @cached_property
+    def possible_profiles(self)->set[BaseProfile]:
+        """
+        A resource can be used by multiple profiles. This is the set of profiles
+        where this element can be found.
+        """
+        return { Profile.DY,  }

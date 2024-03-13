@@ -1,0 +1,37 @@
+"""
+Generated from the CGMES 3 files via cimgen: https://github.com/sogno-platform/cimgen
+"""
+
+from functools import cached_property
+from typing import Optional
+from pydantic import Field
+from pydantic.dataclasses import dataclass
+from ..utils.profile import BaseProfile, Profile
+
+from ..utils.base import Base
+
+@dataclass
+class SvTapStep(Base):
+    """
+    State variable for transformer tap step.     This class is to be used for taps of LTC (load tap changing)
+      transformers, not fixed tap transformers.
+
+    position: The floating point tap position.   This is not the tap ratio, but rather the tap step position as defined
+      by the related tap changer model and normally is constrained to be within the range of minimum and
+      maximum tap positions.
+    TapChanger: The tap changer associated with the tap step state.
+    """
+
+    position : float = Field(default=0.0, json_schema_extra={"in_profiles":[Profile.SV, ]}) 
+
+    TapChanger : Optional[str] = Field(default=None, json_schema_extra={"in_profiles":[Profile.SV, ]}) 
+
+
+
+    @cached_property
+    def possible_profiles(self)->set[BaseProfile]:
+        """
+        A resource can be used by multiple profiles. This is the set of profiles
+        where this element can be found.
+        """
+        return { Profile.SV,  }
